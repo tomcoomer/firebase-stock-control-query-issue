@@ -1,0 +1,78 @@
+{
+	"stock-control": {
+		"user1": {
+      "adminEmailAddress": "user1@email.com",
+      "dateCreated": 7 September 2022 at 12:17:42 UTC+1,
+      "lastUpdated": 1 February 2023 at 11:24:26 UTC,
+      "locations_counter": 2,
+      "products_counter": 5,
+      "sharedAccess": {
+        "user2": {
+          "email": "user2@email.com",
+          "locations": [
+            "locationA",
+            "locationB"
+          ],
+          "status": "accepted"
+        }
+      }
+    },
+		"user2": {
+      "adminEmailAddress": "user2@email.com",
+      "dateCreated": 7 September 2022 at 12:17:42 UTC+1,
+      "lastUpdated": 1 February 2023 at 11:24:26 UTC,
+      "locations_counter": 3,
+      "products_counter": 6,
+      "sharedAccess": {
+        "user3": {
+          "email": "user2@email.com",
+          "locations": [
+            "locationC",
+            "locationE"
+          ],
+          "status": "accepted"
+        }
+      }
+    },
+    "user3": {
+      "adminEmailAddress": "user3@email.com",
+      "dateCreated": 7 September 2022 at 12:17:42 UTC+1,
+      "lastUpdated": 1 February 2023 at 11:24:26 UTC,
+      "locations_counter": 1,
+      "products_counter": 3,
+      "sharedAccess": {
+      }
+    },
+	},
+
+{
+  "stock-control/locations/user1" {
+    "locationA" {
+      "name": "Location A"
+    },
+    "locationB" {
+      "name": "Location B"
+    }
+  },
+  "stock-control/locations/user2" {
+    "locationC" {
+      "name": "Location C"
+    },
+    "locationD" {
+      "name": "Location D"
+    },
+    "locationE" {
+      "name": "Location E"
+    }
+  },
+  "stock-control/locations/user3" {
+    "locationF" {
+      "name": "Location F"
+    }
+  }
+
+}
+
+
+//The "user#-locations" data are sub collections of the "user#" documents
+//E.g. the path is /stock-control/user1/locations/locationA
