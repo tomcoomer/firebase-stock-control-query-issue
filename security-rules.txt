@@ -1,0 +1,20 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    //Stock Control
+    
+    match /stock-control/{docID} {
+    allow read,write: if request.auth.uid == docID;
+    allow read: if request.auth.uid != null;
+    
+    }
+    match /stock-control/{docID}/products/{productDocID} {
+      allow read, write: if request.auth.uid == docID || get(/databases/$(database)/documents/stock-control/$(docID)).data.sharedAccess[request.auth.uid].status == "accepted";
+    }
+    
+    match /stock-control/{docID}/locations/{locationDocID} {
+    allow read, write: if request.auth.uid == docID || locationDocID in get(/databases/$(database)/documents/stock-control/$(docID)).data.sharedAccess[request.auth.uid]["locations"];
+    }
+    
+  }
+}
